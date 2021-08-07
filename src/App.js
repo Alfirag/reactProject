@@ -5,23 +5,18 @@ import { Provider } from 'react-redux';
 import { ConfigureStore } from './redux/configureStore';
 import './App.css';
 
-export const ConfigureStore = () => {
-    const store = createStore(
-        Reducer,
-        initialState
-    );
-
-    return store;
-};
+const store = ConfigureStore();
 
 class App extends Component {
     render() {
         return (
-            <BrowserRouter>
-                <div className="App">
-                    <Main />
-                </div>
-            </BrowserRouter>
+            <Provider store={store}>
+                <BrowserRouter>
+                    <div className="App">
+                        <Main />
+                    </div>
+                </BrowserRouter>
+            </Provider>
         );
     }
 }
